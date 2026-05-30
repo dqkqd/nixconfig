@@ -64,7 +64,10 @@
       };
     };
   };
-  programs.foot.enable = true;
+  programs.ghostty = {
+    enable = true;
+    enableBashIntegration = true;
+  };
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -74,7 +77,7 @@
     enable = true;
     config = rec {
       modifier = "Mod4";
-      terminal = "foot";
+      terminal = "ghostty";
       keybindings = lib.mkOptionDefault {
         "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
