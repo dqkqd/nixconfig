@@ -38,21 +38,22 @@
     noto-fonts-color-emoji
   ];
 
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    enableBashIntegration = true;
+    enableSshSupport = true;
+    pinentryPackage = pkgs.pinentry-tty;
+  };
+
+  programs.jujutsu.enable = true;
 
   home.file = {
     ".config/zed/settings.json".source = ./user/zed/settings.json;
     ".config/zed/keymap.json".source = ./user/zed/keymap.json;
+    ".config/jj/config.toml".source = ./user/jujutsu.toml;
   };
 
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      user = {
-        name = "Khanh Duong";
-        email = "dqkqdlot@gmail.com";
-      };
-    };
-  };
 
   programs.zed-editor.enable = true;
 
