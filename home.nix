@@ -61,6 +61,15 @@
       };
     };
   };
+  programs.foot.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+  programs.firefox.enable = true;
+  wayland.windowManager.sway = {
+    enable = true;
+  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

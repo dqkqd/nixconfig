@@ -63,16 +63,7 @@
   users.users.dqk = {
      isNormalUser = true;
      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-     packages = with pkgs; [
-       vim
-       git
-       foot
-     ];
    };
-
-  # TODO: remove this later when switching to home manager
-  programs.firefox.enable = true;
-  programs.sway.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
