@@ -39,7 +39,10 @@
   ];
 
 
-  home.file = { };
+  home.file = {
+    ".config/zed/settings.json".source = ./user/zed/settings.json;
+    ".config/zed/keymap.json".source = ./user/zed/keymap.json;
+  };
 
   programs.jujutsu = {
     enable = true;
@@ -50,6 +53,8 @@
       };
     };
   };
+
+  programs.zed-editor.enable = true;
 
   home.shell.enableBashIntegration = true;
 
