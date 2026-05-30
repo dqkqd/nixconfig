@@ -64,6 +64,7 @@
       };
     };
   };
+  home.shell.enableBashIntegration = true;
   programs.ghostty = {
     enable = true;
     enableBashIntegration = true;
