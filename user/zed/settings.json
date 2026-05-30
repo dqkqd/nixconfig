@@ -64,7 +64,6 @@
     "comment": true,
     "csv": true,
     "markdownlint": true,
-    "codebook": true,
     "nix": true,
     "tombi": true,
     "just": true,

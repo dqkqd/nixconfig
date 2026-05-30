@@ -22,14 +22,14 @@
       legend = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./host/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.dqk = ./home.nix;
+            home-manager.users.dqk = ./user/home.nix;
           }
         ];
       };

@@ -17,6 +17,7 @@
   # release notes.
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
+  # sway configuration
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -28,7 +29,6 @@
       };
     };
   };
-
   programs.swaylock.enable = true;
 
   # packages
@@ -46,6 +46,23 @@
   ];
 
   programs.gpg.enable = true;
+  programs.jujutsu.enable = true;
+  programs.zed-editor.enable = true;
+  programs.fd.enable = true;
+  programs.ghostty = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+  programs.firefox.enable = true;
+
   services.gpg-agent = {
     enable = true;
     enableBashIntegration = true;
@@ -53,36 +70,13 @@
     pinentryPackage = pkgs.pinentry-tty;
   };
 
-  programs.jujutsu.enable = true;
-
-  home.file = {
-    ".config/zed/settings.json".source = ./user/zed/settings.json;
-    ".config/zed/keymap.json".source = ./user/zed/keymap.json;
-    ".config/jj/config.toml".source = ./user/jujutsu.toml;
+  xdg.enable = true;
+  xdg.configFile = {
+    "zed/settings.json".source = ./zed/settings.json;
+    "zed/keymap.json".source = ./zed/keymap.json;
+    "jj/config.toml".source = ./jujutsu.toml;
   };
-
-  programs.zed-editor.enable = true;
-  programs.fd.enable = true;
-
   home.shell.enableBashIntegration = true;
-
-  programs.ghostty = {
-    enable = true;
-    enableBashIntegration = true;
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
-  programs.firefox.enable = true;
-
   home.sessionVariables = {EDITOR = "nvim";};
 
   # Let Home Manager install and manage itself.
