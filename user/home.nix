@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
+  imports = [
+    ./sway.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dqk";
@@ -17,20 +16,6 @@
   # release notes.
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
-  # sway configuration
-  wayland.windowManager.sway = {
-    enable = true;
-    config = {
-      modifier = "Mod4";
-      terminal = "ghostty";
-      keybindings = lib.mkOptionDefault {
-        "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
-        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
-      };
-    };
-  };
-  programs.swaylock.enable = true;
-
   # packages
   home.packages = with pkgs; [
     brightnessctl
@@ -40,6 +25,9 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
+    font-awesome
+    source-han-sans
+    source-han-serif
 
     # wayland
     wl-clipboard

@@ -54,13 +54,16 @@
     jack.enable = true;
   };
 
+  # https://nixos.wiki/wiki/Sway#Using_Home_Manager
+  security.polkit.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dqk = {
     isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "video"]; # Enable ‘sudo’ for the user.
   };
 
   # enable swaylock
