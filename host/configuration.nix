@@ -83,6 +83,9 @@
   programs.gnupg.agent.enable = true;
   programs.ssh.startAgent = true;
 
+  # https://wiki.nixos.org/wiki/Zed#Nix-ld_(recommended)
+  programs.nix-ld.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

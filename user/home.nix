@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./sway.nix
+    ./zed.nix
     ./zsh.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -21,6 +22,7 @@
   home.packages = with pkgs; [
     brightnessctl
     just
+    git
 
     # fonts
     noto-fonts
@@ -37,7 +39,6 @@
   programs.zoxide.enable = true;
   programs.gpg.enable = true;
   programs.jujutsu.enable = true;
-  programs.zed-editor.enable = true;
   programs.fd.enable = true;
   programs.ghostty.enable = true;
   programs.direnv = {
@@ -52,8 +53,6 @@
 
   xdg.enable = true;
   xdg.configFile = {
-    "zed/settings.json".source = ./zed/settings.json;
-    "zed/keymap.json".source = ./zed/keymap.json;
     "jj/config.toml".source = ./jujutsu.toml;
   };
   home.sessionVariables = {EDITOR = "nvim";};
