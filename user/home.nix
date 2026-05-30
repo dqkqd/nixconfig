@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./sway.nix
+    ./zsh.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -33,14 +34,12 @@
     wl-clipboard
   ];
 
+  programs.zoxide.enable = true;
   programs.gpg.enable = true;
   programs.jujutsu.enable = true;
   programs.zed-editor.enable = true;
   programs.fd.enable = true;
-  programs.ghostty = {
-    enable = true;
-    enableBashIntegration = true;
-  };
+  programs.ghostty.enable = true;
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -53,7 +52,6 @@
 
   services.gpg-agent = {
     enable = true;
-    enableBashIntegration = true;
     enableSshSupport = true;
     pinentryPackage = pkgs.pinentry-tty;
   };
@@ -64,7 +62,6 @@
     "zed/keymap.json".source = ./zed/keymap.json;
     "jj/config.toml".source = ./jujutsu.toml;
   };
-  home.shell.enableBashIntegration = true;
   home.sessionVariables = {EDITOR = "nvim";};
 
   # Let Home Manager install and manage itself.
