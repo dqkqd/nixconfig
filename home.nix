@@ -36,6 +36,9 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
+
+    # wayland
+    wl-clipboard
   ];
 
   programs.gpg.enable = true;
