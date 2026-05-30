@@ -1,15 +1,12 @@
-{
-  pkgs ? import <nixpkgs> { },
-}:
-
+{pkgs ? import <nixpkgs> {}}:
 pkgs.mkShellNoCC {
   packages = with pkgs; [
-    nixd
+    nil
+    alejandra
     cachix
-    lorri
     niv
-    nixfmt-classic
     statix
     vulnix
+    tombi
   ];
 }

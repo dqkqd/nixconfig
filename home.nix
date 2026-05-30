@@ -1,6 +1,8 @@
-{ config, pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dqk";
@@ -17,7 +19,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    config = rec {
+    config = {
       modifier = "Mod4";
       terminal = "ghostty";
       keybindings = lib.mkOptionDefault {
@@ -60,6 +62,7 @@
   };
 
   programs.zed-editor.enable = true;
+  programs.fd.enable = true;
 
   home.shell.enableBashIntegration = true;
 
@@ -80,9 +83,7 @@
 
   programs.firefox.enable = true;
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables = {EDITOR = "nvim";};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

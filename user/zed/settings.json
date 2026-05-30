@@ -66,6 +66,8 @@
     "markdownlint": true,
     "codebook": true,
     "nix": true,
+    "tombi": true,
+    "just": true,
   },
   "inlay_hints": {
     "enabled": true,
@@ -78,6 +80,15 @@
         "lsp": true,
         "lsp_fetch_timeout_ms": 0,
         "lsp_insert_mode": "replace_suffix",
+      },
+    },
+    "Nix": {
+      "language_servers": ["nil", "!nixd"],
+      "formatter": {
+        "external": {
+          "command": "alejandra",
+          "arguments": ["--quiet", "--"],
+        },
       },
     },
   },
