@@ -36,6 +36,11 @@
     # '')
     brightnessctl
     just
+
+    # fonts
+    noto-fonts
+    noto-fonts-cjk-sans  # for Japanese/Chinese/Korean
+    noto-fonts-color-emoji
   ];
 
 
