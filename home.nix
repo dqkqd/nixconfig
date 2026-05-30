@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -34,8 +34,10 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    brightnessctl
     just
   ];
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -70,9 +72,13 @@
   programs.firefox.enable = true;
   wayland.windowManager.sway = {
     enable = true;
-    config = {
+    config = rec {
       modifier = "Mod4";
       terminal = "foot";
+      keybindings = lib.mkOptionDefault {
+        "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+      };
     };
   };
 
