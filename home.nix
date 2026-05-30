@@ -27,6 +27,8 @@
     };
   };
 
+  programs.swaylock.enable = true;
+
   # packages
   home.packages = with pkgs; [
     brightnessctl
@@ -56,7 +58,6 @@
     ".config/zed/keymap.json".source = ./user/zed/keymap.json;
     ".config/jj/config.toml".source = ./user/jujutsu.toml;
   };
-
 
   programs.zed-editor.enable = true;
 

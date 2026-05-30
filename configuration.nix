@@ -38,9 +38,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
-  
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -63,7 +60,11 @@
   users.users.dqk = {
      isNormalUser = true;
      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-   };
+  };
+
+  # enable swaylock
+  security.pam.services.swaylock = {};
+
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -116,4 +117,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
