@@ -70,6 +70,10 @@
   programs.firefox.enable = true;
   wayland.windowManager.sway = {
     enable = true;
+    config = {
+      modifier = "Mod4";
+      terminal = "foot";
+    };
   };
 
   # Home Manager can also manage your environment variables through
