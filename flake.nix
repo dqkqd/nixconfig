@@ -2,20 +2,24 @@
   description = "dqk NixOS configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager }: {
     nixosConfigurations = {
       legend = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
