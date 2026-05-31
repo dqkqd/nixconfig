@@ -33,6 +33,16 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  # https://nixos.wiki/wiki/Storage_optimization
+  nix.optimise.automatic = true;
+  nix.optimise.dates = ["03:45"]; # Optional; allows customizing optimisation schedule
+  # https://nixos.wiki/wiki/Storage_optimization#Automation
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
