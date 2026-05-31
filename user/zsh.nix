@@ -18,6 +18,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
+        "fzf"
         "jj"
         "vi-mode"
         "zoxide"

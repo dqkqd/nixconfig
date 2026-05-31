@@ -107,10 +107,23 @@
   programs.gnupg.agent.enable = true;
   programs.ssh.startAgent = true;
 
-  # https://wiki.nixos.org/wiki/Zed#Nix-ld_(recommended)
-  programs.nix-ld.enable = true;
+  # enable bluetooth https://wiki.nixos.org/wiki/Bluetooth
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = false;
+  };
+  services.blueman.enable = true;
 
   # List services that you want to enable:
+  services.tlp = {
+    enable = true;
+    settings = {
+      # https://linrunner.de/tlp/settings/battery.html
+      # Optional helps save long term battery health
+      START_CHARGE_THRESH_BAT0 = 75; # 75 and bellow it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+    };
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

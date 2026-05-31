@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   imports = [
+    ./firefox.nix
     ./sway.nix
     ./zed.nix
     ./zsh.nix
-    ./firefox.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -29,21 +29,30 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
+    nerd-fonts.fira-code
     font-awesome
     source-han-sans
     source-han-serif
 
     # wayland
     wl-clipboard
+    mako
   ];
 
   programs.zoxide.enable = true;
+  programs.gh.enable = true;
+  programs.fzf.enable = true;
   programs.gpg.enable = true;
   programs.jujutsu.enable = true;
-
+  programs.fuzzel.enable = true;
   programs.fd.enable = true;
   programs.ripgrep.enable = true;
-  programs.ghostty.enable = true;
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      font-family = "FiraCode Nerd Font Mono";
+    };
+  };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -59,6 +68,15 @@
     "jj/config.toml".source = ./jujutsu.toml;
   };
   home.sessionVariables = {EDITOR = "nvim";};
+  # expiring
+  services.home-manager = {
+    autoExpire = {
+      enable = true;
+      frequency = "weekly";
+      store.cleanup = true;
+      timestamp = "-7 days";
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

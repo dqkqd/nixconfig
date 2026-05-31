@@ -1,0 +1,43 @@
+* {
+  font-family:
+    FiraCode Nerd Font,
+    FontAwesome,
+    Roboto;
+  font-size: 13px;
+  font-weight: bold;
+  min-height: 15px;
+}
+
+#workspaces button,
+#clock,
+#network,
+#memory,
+#cpu,
+#temperature,
+#battery,
+#backlight,
+#wireplumber,
+#disk,
+#bluetooth,
+#tray {
+  margin: 0px 2px;
+  padding: 0px 10px;
+  background-color: black;
+  color: white;
+}
+
+window#waybar {
+  background: black;
+  color: white;
+}
+
+#workspaces button {
+  border-radius: 1px;
+  border: none;
+  padding: 0px 4px;
+}
+
+#workspaces button.focused {
+  background-color: white;
+  color: black;
+}

@@ -9,5 +9,9 @@ pkgs.mkShellNoCC {
 
     # toml
     tombi
+
+    # css
+    vscode-langservers-extracted
+    prettierd
   ];
 }
