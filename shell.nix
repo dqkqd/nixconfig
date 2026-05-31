@@ -1,12 +1,13 @@
 {pkgs ? import <nixpkgs> {}}:
 pkgs.mkShellNoCC {
   packages = with pkgs; [
-    nil
+    # nix
+    nixd
     alejandra
-    niv
     statix
-    vulnix
+    deadnix
+
+    # toml
     tombi
-    nodejs
   ];
 }

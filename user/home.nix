@@ -3,6 +3,7 @@
     ./sway.nix
     ./zed.nix
     ./zsh.nix
+    ./firefox.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -39,7 +40,9 @@
   programs.zoxide.enable = true;
   programs.gpg.enable = true;
   programs.jujutsu.enable = true;
+
   programs.fd.enable = true;
+  programs.ripgrep.enable = true;
   programs.ghostty.enable = true;
   programs.direnv = {
     enable = true;
@@ -49,7 +52,7 @@
     enable = true;
     defaultEditor = true;
   };
-  programs.firefox.enable = true;
+  programs.discord.enable = true;
 
   xdg.enable = true;
   xdg.configFile = {

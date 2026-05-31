@@ -6,6 +6,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
 
   # Use the systemd-boot EFI boot loader.
@@ -18,7 +19,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Asia/Tokyo";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -69,6 +70,19 @@
 
   # enable swaylock
   security.pam.services.swaylock = {};
+
+  # enable wayland screen sharing
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+    ];
+    config = {
+      firefox = {
+        default = ["wlr"];
+      };
+    };
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
