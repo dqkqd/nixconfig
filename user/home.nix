@@ -78,7 +78,12 @@
   xdg.configFile = {
     "jj/config.toml".source = ./jujutsu.toml;
   };
-  home.sessionVariables = {EDITOR = "nvim";};
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    # fcitx5
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+  };
   # expiring
   services.home-manager = {
     autoExpire = {

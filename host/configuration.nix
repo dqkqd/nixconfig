@@ -94,6 +94,18 @@
     };
   };
 
+  # https://wiki.nixos.org/wiki/Fcitx5
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      qt6Packages.fcitx5-unikey
+      fcitx5-gtk
+    ];
+  };
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   # environment.systemPackages = with pkgs; [
