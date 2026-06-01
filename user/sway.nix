@@ -28,7 +28,6 @@
         {command = "waybar";}
       ];
       startup = [
-        {command = "mako";}
         {command = "fcitx5";}
         {command = "swaymsg workspace 1";}
       ];

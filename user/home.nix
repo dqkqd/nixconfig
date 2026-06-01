@@ -39,7 +39,6 @@
 
     # wayland
     wl-clipboard
-    mako
 
     # nvim
     inputs.nvim-nixos.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -75,6 +74,7 @@
     enable = true;
     presets = ["nerd-font-symbols"];
   };
+  services.mako.enable = true;
   xdg.enable = true;
   xdg.configFile = {
     "jj/config.toml".source = ./jujutsu.toml;
