@@ -61,7 +61,10 @@
     defaultEditor = true;
   };
   programs.discord.enable = true;
-
+  programs.starship = {
+    enable = true;
+    presets = ["nerd-font-symbols"];
+  };
   xdg.enable = true;
   xdg.configFile = {
     "jj/config.toml".source = ./jujutsu.toml;
