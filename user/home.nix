@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./firefox.nix
     ./sway.nix
@@ -36,6 +40,9 @@
     # wayland
     wl-clipboard
     mako
+
+    # nvim
+    inputs.nvim-nixos.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   catppuccin = {
@@ -61,10 +68,6 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-  };
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
   };
   programs.discord.enable = true;
   programs.starship = {

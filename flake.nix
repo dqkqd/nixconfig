@@ -12,14 +12,19 @@
     };
 
     catppuccin.url = "github:catppuccin/nix/release-26.05";
+
+    nvim-nixos = {
+      url = "github:dqkqd/nvim-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
-    self,
     nixpkgs,
     nixos-hardware,
     home-manager,
     catppuccin,
+    ...
   }: {
     nixosConfigurations = {
       legend = nixpkgs.lib.nixosSystem {
