@@ -38,6 +38,12 @@
     mako
   ];
 
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    firefox.enable = false;
+  };
+
   programs.zoxide.enable = true;
   programs.gh.enable = true;
   programs.fzf.enable = true;

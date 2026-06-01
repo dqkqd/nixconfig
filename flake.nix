@@ -10,6 +10,8 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix/release-26.05";
   };
 
   outputs = inputs @ {
@@ -17,6 +19,7 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
+    catppuccin,
   }: {
     nixosConfigurations = {
       legend = nixpkgs.lib.nixosSystem {
@@ -29,7 +32,12 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.dqk = ./user/home.nix;
+            home-manager.users.dqk = {
+              imports = [
+                ./user/home.nix
+                catppuccin.homeModules.catppuccin
+              ];
+            };
           }
         ];
       };
