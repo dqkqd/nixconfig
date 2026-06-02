@@ -111,6 +111,12 @@
           all-outputs = true;
         };
 
+        clock = {
+          interval = 60;
+          format = "{:%Y-%m-%d %H:%M}";
+          max-length = 25;
+        };
+
         network = {
           interval = 10;
           format-wifi = "  ({signalStrength}%)";
