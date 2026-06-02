@@ -37,5 +37,8 @@
         };
       }
     ];
+
+    # init direnv: https://github.com/nix-community/nix-direnv/wiki/Shell-integration
+    initContent = builtins.readFile ./init-content.zsh;
   };
 }
