@@ -42,6 +42,14 @@
 
     # nvim
     inputs.nvim-nixos.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    (anki.withAddons [
+      ankiAddons.passfail2
+      ankiAddons.review-heatmap
+      ankiAddons.anki-connect
+      ankiAddons.local-audio-yomichan
+    ])
+    mpv
   ];
 
   catppuccin = {
