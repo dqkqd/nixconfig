@@ -11,3 +11,6 @@ clean:
 
 optimize:
     nix-store --optimise
+
+firefox-ext-guid name:
+  curl -s "https://addons.mozilla.org/api/v5/addons/addon/{{name}}/" | jq ".guid"

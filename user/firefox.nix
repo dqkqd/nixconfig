@@ -23,6 +23,11 @@
           installation_mode = "force_installed";
           updates_disabled = true;
         };
+        "addon@darkreader.org" = {
+          install_url = moz "darkreader";
+          installation_mode = "force_installed";
+          updates_disabled = true;
+        };
       };
     };
 

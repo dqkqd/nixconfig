@@ -13,5 +13,7 @@ pkgs.mkShellNoCC {
     # css
     vscode-langservers-extracted
     prettierd
+
+    jq
   ];
 }
