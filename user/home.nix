@@ -39,6 +39,8 @@
 
     # wayland
     wl-clipboard
+    slurp
+    grim
 
     # nvim
     inputs.nvim-nixos.packages.${pkgs.stdenv.hostPlatform.system}.default
