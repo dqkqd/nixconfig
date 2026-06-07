@@ -61,6 +61,7 @@
     firefox.enable = false;
   };
 
+  programs.yazi.enable = true;
   programs.bat.enable = true;
   programs.zoxide.enable = true;
   programs.gh.enable = true;
