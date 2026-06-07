@@ -27,6 +27,7 @@
     brightnessctl
     just
     git
+    uv
 
     # fonts
     noto-fonts
