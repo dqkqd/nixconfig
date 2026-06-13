@@ -53,6 +53,8 @@
       ankiAddons.local-audio-yomichan
     ])
     mpv
+
+    xdg-utils
   ];
 
   catppuccin = {
@@ -88,6 +90,16 @@
   };
   services.mako.enable = true;
   xdg.enable = true;
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
+  };
   xdg.configFile = {
     "jj/config.toml".source = ./jujutsu.toml;
   };
