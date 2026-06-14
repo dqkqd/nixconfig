@@ -79,6 +79,9 @@
       font-family = "FiraCode Nerd Font Mono";
     };
   };
+  programs.obsidian = {
+    enable = true;
+  };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
