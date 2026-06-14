@@ -29,6 +29,8 @@
     git
     uv
 
+    kdePackages.okular
+
     # fonts
     noto-fonts
     noto-fonts-cjk-sans
