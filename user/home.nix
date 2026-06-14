@@ -94,6 +94,7 @@
     presets = ["nerd-font-symbols"];
   };
   services.mako.enable = true;
+  services.syncthing.enable = true;
   xdg.enable = true;
   xdg.mimeApps = {
     enable = true;
