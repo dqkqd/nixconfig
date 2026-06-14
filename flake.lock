@@ -109,11 +109,11 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1781417314,
-        "narHash": "sha256-QW1Y5NJ0gkTF3bgbsg8I27GT1ucdAC6Ejl8NbQch8sg=",
+        "lastModified": 1781431847,
+        "narHash": "sha256-AyUFQruflC7OwfXTtgWekc9fNBaCLmZSxKMLWbBSzcY=",
         "owner": "dqkqd",
         "repo": "nvim-nixos",
-        "rev": "30e3eb66339159c8b3888f138dde0af0b29b61ca",
+        "rev": "7752b1e3f020cb68515c4b6d963f6d72f3b09b1f",
         "type": "github"
       },
       "original": {
