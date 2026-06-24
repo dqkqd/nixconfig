@@ -74,7 +74,7 @@
   programs.zsh.enable = true;
   users.users.dqk = {
     isNormalUser = true;
-    extraGroups = ["wheel" "video"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "video" "docker"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -138,6 +138,10 @@
       START_CHARGE_THRESH_BAT0 = 75; # 75 and bellow it starts to charge
       STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
     };
+  };
+
+  virtualisation.docker = {
+    enable = true;
   };
 
   # Enable the OpenSSH daemon.
