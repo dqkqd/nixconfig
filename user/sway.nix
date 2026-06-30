@@ -35,7 +35,7 @@
         "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";
         "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'";
         "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'";
-        "XF86AudioMicMute" = "exec 'wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle'";
+        "XF86AudioMicMute" = "exec 'wpctl set-mute @DEFAULT_SOURCE@ toggle'";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
         "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
         "${modifier}+Shift+r" = "exec slurp | grim -g - - | wl-copy";
@@ -101,6 +101,7 @@
           "temperature"
           "battery"
           "backlight"
+          "custom/mic"
           "wireplumber"
           "disk"
           "bluetooth"
@@ -161,6 +162,13 @@
         backlight = {
           format = "{icon} {percent}%";
           format-icons = ["" ""];
+        };
+
+        "custom/mic" = {
+          exec = "wpctl get-volume @DEFAULT_SOURCE@ | awk '{if ($3 == \"[MUTED]\") print \"\"; else print \"\"}'";
+          interval = 2;
+          on-click = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
+          tooltip = false;
         };
 
         wireplumber = {
