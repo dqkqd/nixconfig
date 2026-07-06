@@ -17,6 +17,9 @@
       url = "github:dqkqd/nvim-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # https://nix-community.github.io/home-manager/faq/unstable.html
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs = inputs @ {
@@ -24,26 +27,36 @@
     nixos-hardware,
     home-manager,
     catppuccin,
+    nixpkgs-unstable,
     ...
-  }: {
+  }: let
+    system = "x86_64-linux";
+  in {
     nixosConfigurations = {
       legend = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         modules = [
           ./host/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2
           home-manager.nixosModules.home-manager
-          {
+          ({config, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgsUnstable = import nixpkgs-unstable {
+                inherit system;
+                config = config.nixpkgs.config;
+                overlays = config.nixpkgs.overlays;
+              };
+            };
             home-manager.users.dqk = {
               imports = [
                 ./user/home.nix
                 catppuccin.homeModules.catppuccin
               ];
             };
-          }
+          })
         ];
       };
     };

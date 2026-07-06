@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsUnstable,
   inputs,
   ...
 }: {
@@ -76,6 +77,10 @@
   programs.fuzzel.enable = true;
   programs.fd.enable = true;
   programs.ripgrep.enable = true;
+  programs.opencode = {
+    enable = true;
+    package = pkgsUnstable.opencode;
+  };
   programs.ghostty = {
     enable = true;
     settings = {
