@@ -1,7 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -140,18 +144,35 @@
     };
   };
 
+  services.tailscale = {
+    enable = true;
+  };
+
   virtualisation.docker = {
     enable = true;
   };
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    # enable the firewall
+    enable = true;
+
+    # always allow traffic from your Tailscale network
+    trustedInterfaces = ["tailscale0"];
+
+    # allow the Tailscale UDP port through the firewall
+    allowedUDPPorts = [config.services.tailscale.port];
+
+    # let you SSH in over the public internet
+    allowedTCPPorts = [22];
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
