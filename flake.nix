@@ -31,6 +31,31 @@
     ...
   }: let
     system = "x86_64-linux";
+
+    fwupdOverlay = final: prev: {
+      fwupd = prev.fwupd.overrideAttrs (old: rec {
+        version = "2.1.6";
+        src = prev.fetchFromGitHub {
+          owner = "fwupd";
+          repo = "fwupd";
+          rev = version;
+          hash = "sha256-K8n1rPiLuHDybWPoAUQA7RY4J+Ga1fwNiaj48fHAh9A=";
+        };
+
+        patches =
+          builtins.filter (
+            p:
+              !(prev.lib.strings.hasInfix "0004-Get-the-efi-app-from-fwupd-efi" (baseNameOf (toString p)))
+          )
+          old.patches;
+
+        mesonFlags =
+          old.mesonFlags
+          ++ [
+            (prev.lib.mesonOption "efi_app_location" "${prev.fwupd-efi}/libexec/fwupd/efi")
+          ];
+      });
+    };
   in {
     nixosConfigurations = {
       legend = nixpkgs.lib.nixosSystem {
@@ -38,6 +63,7 @@
         specialArgs = {
           pkgsUnstable = import nixpkgs-unstable {
             inherit system;
+            overlays = [fwupdOverlay];
           };
         };
         modules = [
@@ -52,7 +78,7 @@
               pkgsUnstable = import nixpkgs-unstable {
                 inherit system;
                 config = config.nixpkgs.config;
-                overlays = config.nixpkgs.overlays;
+                overlays = config.nixpkgs.overlays ++ [fwupdOverlay];
               };
             };
             home-manager.users.dqk = {
