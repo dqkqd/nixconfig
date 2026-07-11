@@ -35,6 +35,11 @@
     nixosConfigurations = {
       legend = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = {
+          pkgsUnstable = import nixpkgs-unstable {
+            inherit system;
+          };
+        };
         modules = [
           ./host/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2

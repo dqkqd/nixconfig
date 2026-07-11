@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   ...
 }: {
   imports = [
@@ -153,6 +154,15 @@
       CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";
     };
   };
+
+  services.fwupd = {
+    enable = true;
+    package =
+      pkgsUnstable.fwupd;
+  };
+  environment.systemPackages = [
+    pkgsUnstable.fwupd
+  ];
 
   services.thinkfan = {
     enable = true;
