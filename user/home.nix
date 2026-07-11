@@ -68,6 +68,7 @@
   };
 
   programs.yazi.enable = true;
+  programs.tmux.enable = true;
   programs.eza.enable = true;
   programs.bat.enable = true;
   programs.zoxide.enable = true;
