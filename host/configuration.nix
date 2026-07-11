@@ -145,6 +145,9 @@
       # Fix aggressive fan noise by using balanced platform profile
       PLATFORM_PROFILE_ON_AC = "balanced";
       PLATFORM_PROFILE_ON_BAT = "balanced";
+
+      CPU_BOOST_ON_AC = 0;
+      CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";
     };
   };
 
