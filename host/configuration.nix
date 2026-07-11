@@ -16,6 +16,9 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.extraModprobeConfig = ''
+    options thinkpad_acpi  fan_control=1
+  '';
 
   # networking.hostName = "nixos"; # Define your hostname.
 
@@ -149,6 +152,10 @@
       CPU_BOOST_ON_AC = 0;
       CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";
     };
+  };
+
+  services.thinkfan = {
+    enable = true;
   };
 
   services.tailscale = {
