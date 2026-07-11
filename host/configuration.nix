@@ -141,6 +141,10 @@
       # Optional helps save long term battery health
       START_CHARGE_THRESH_BAT0 = 75; # 75 and bellow it starts to charge
       STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+      # Fix aggressive fan noise by using balanced platform profile
+      PLATFORM_PROFILE_ON_AC = "balanced";
+      PLATFORM_PROFILE_ON_BAT = "balanced";
     };
   };
 
