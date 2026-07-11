@@ -1,14 +1,15 @@
 {
   pkgs,
-  pkgsUnstable,
   inputs,
   ...
 }: {
   imports = [
     ./firefox.nix
+    ./mcp.nix
+    ./opencode.nix
+    ./skills.nix
     ./sway.nix
     ./zsh.nix
-    ./skills.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -79,10 +80,6 @@
   programs.fuzzel.enable = true;
   programs.fd.enable = true;
   programs.ripgrep.enable = true;
-  programs.opencode = {
-    enable = true;
-    package = pkgsUnstable.opencode;
-  };
   programs.ghostty = {
     enable = true;
     settings = {
