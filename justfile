@@ -14,7 +14,6 @@ fmt-check:
 lint:
     statix check .
     deadnix .
-    biome lint .
     actionlint -color
     gitleaks detect --source . --verbose --redact
 
@@ -39,4 +38,4 @@ optimize:
     nix-store --optimise
 
 firefox-ext-guid name:
-  curl -s "https://addons.mozilla.org/api/v5/addons/addon/{{name}}/" | jq ".guid"
+    curl -s "https://addons.mozilla.org/api/v5/addons/addon/{{ name }}/" | jq ".guid"

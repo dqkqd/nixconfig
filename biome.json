@@ -7,12 +7,6 @@
     "lineWidth": 100,
     "lineEnding": "lf"
   },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true
-    }
-  },
   "json": {
     "formatter": {
       "enabled": true
@@ -24,9 +18,6 @@
   },
   "css": {
     "formatter": {
-      "enabled": true
-    },
-    "linter": {
       "enabled": true
     }
   },
