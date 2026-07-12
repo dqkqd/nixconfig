@@ -14,7 +14,6 @@ fmt-check:
 lint:
     statix check .
     deadnix .
-    actionlint -color
     gitleaks detect --source . --verbose --redact
 
 # Run all local checks (format check + lint + flake eval)

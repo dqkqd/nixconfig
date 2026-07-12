@@ -26,7 +26,6 @@ pkgs.mkShellNoCC {
     # linting
     statix
     deadnix
-    actionlint
     gitleaks
     # local ci testing
     act
