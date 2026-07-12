@@ -28,9 +28,6 @@ pkgs.mkShellNoCC {
     deadnix
     actionlint
     gitleaks
-    shellcheck
-    shfmt
-
     # local ci testing
     act
   ];

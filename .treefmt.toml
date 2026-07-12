@@ -5,9 +5,9 @@ excludes = [
   ".jj",
   ".codegraph",
   "result*",
-  "flake.lock",
   "node_modules",
-  "*.lock"
+  "*.lock",
+  "user/agents"
 ]
 
 [formatter.nix]
