@@ -166,6 +166,15 @@
 
   services.thinkfan = {
     enable = true;
+    levels = [
+      [ 0   0   55 ]
+      [ 1  50   70 ]
+      [ 2  65   75 ]
+      [ 3  70   80 ]
+      [ 4  75   85 ]
+      [ 5  80   90 ]
+      [ 7  85 32767 ]
+    ];
   };
 
   services.tailscale = {
