@@ -1,0 +1,33 @@
+[global]
+excludes = [
+  ".direnv",
+  ".git",
+  ".jj",
+  ".codegraph",
+  "result*",
+  "node_modules",
+  "*.lock",
+]
+
+[formatter.nix]
+command = "alejandra"
+includes = ["*.nix"]
+
+[formatter.biome]
+command = "biome"
+options = ["format", "--write"]
+includes = ["*.css", "*.json"]
+
+[formatter.markdown]
+command = "prettier"
+options = ["--write"]
+includes = ["*.md"]
+
+[formatter.toml]
+command = "taplo"
+options = ["fmt"]
+includes = ["*.toml"]
+
+[formatter.lua]
+command = "stylua"
+includes = ["*.lua"]

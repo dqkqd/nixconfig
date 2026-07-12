@@ -1,3 +1,27 @@
+# List all recipes
+default:
+    @just --list
+
+# Format all files with one command
+fmt:
+    treefmt
+
+# Check formatting without writing files
+fmt-check:
+    treefmt --fail-on-change --no-cache
+
+# Run all linters
+lint:
+    statix check .
+    deadnix .
+    gitleaks detect --source . --verbose --redact
+
+# Run all local checks (format check + lint + flake eval)
+check:
+    treefmt --fail-on-change --no-cache
+    just lint
+    nix flake check --no-build --show-trace
+
 build:
     sudo nixos-rebuild switch --flake .#legend
 
@@ -13,4 +37,4 @@ optimize:
     nix-store --optimise
 
 firefox-ext-guid name:
-  curl -s "https://addons.mozilla.org/api/v5/addons/addon/{{name}}/" | jq ".guid"
+    curl -s "https://addons.mozilla.org/api/v5/addons/addon/{{ name }}/" | jq ".guid"

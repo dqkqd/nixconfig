@@ -32,7 +32,7 @@
   }: let
     system = "x86_64-linux";
 
-    fwupdOverlay = final: prev: {
+    fwupdOverlay = _final: prev: {
       fwupd = prev.fwupd.overrideAttrs (old: rec {
         version = "2.1.6";
         src = prev.fetchFromGitHub {
