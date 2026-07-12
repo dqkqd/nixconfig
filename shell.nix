@@ -4,7 +4,7 @@
     nixpkgsLocked = lock.nodes.nixpkgs.locked;
   in
     import (builtins.fetchTarball {
-      url = nixpkgsLocked.url;
+      inherit (nixpkgsLocked) url;
       sha256 = nixpkgsLocked.narHash;
     }) {},
 }:
