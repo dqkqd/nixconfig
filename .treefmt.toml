@@ -6,7 +6,7 @@ excludes = [
   ".codegraph",
   "result*",
   "node_modules",
-  "*.lock"
+  "*.lock",
 ]
 
 [formatter.nix]
@@ -22,6 +22,11 @@ includes = ["*.css", "*.json"]
 command = "prettier"
 options = ["--write"]
 includes = ["*.md"]
+
+[formatter.toml]
+command = "taplo"
+options = ["fmt"]
+includes = ["*.toml"]
 
 [formatter.lua]
 command = "stylua"

@@ -1,4 +1,2 @@
 ignore = [".direnv"]
-disabled = [
-  "repeated_keys"
-]
+disabled = ["repeated_keys"]

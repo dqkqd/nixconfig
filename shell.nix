@@ -22,6 +22,7 @@ pkgs.mkShellNoCC {
     biome
     prettier
     stylua
+    taplo
 
     # linting
     statix
