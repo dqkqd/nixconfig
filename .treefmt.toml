@@ -6,8 +6,7 @@ excludes = [
   ".codegraph",
   "result*",
   "node_modules",
-  "*.lock",
-  "user/agents"
+  "*.lock"
 ]
 
 [formatter.nix]
@@ -20,7 +19,8 @@ options = ["format", "--write"]
 includes = ["*.css", "*.json"]
 
 [formatter.markdown]
-command = "mdformat"
+command = "prettier"
+options = ["--write"]
 includes = ["*.md"]
 
 [formatter.lua]

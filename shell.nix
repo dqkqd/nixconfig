@@ -20,7 +20,7 @@ pkgs.mkShellNoCC {
     alejandra
     treefmt
     biome
-    mdformat
+    prettier
     stylua
 
     # linting
