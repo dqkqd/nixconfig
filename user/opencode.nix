@@ -1,8 +1,22 @@
-{pkgsUnstable, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.opencode = {
     enable = true;
-    package = pkgsUnstable.opencode;
+    package = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
     enableMcpIntegration = true;
+    web = {
+      enable = true;
+      extraArgs = [
+        "--hostname"
+        "0.0.0.0"
+        "--port"
+        "4096"
+        "--mdns"
+      ];
+    };
     settings = {
       plugin = ["superpowers@git+https://github.com/obra/superpowers.git"];
       agent = {

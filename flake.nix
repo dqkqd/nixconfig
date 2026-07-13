@@ -15,7 +15,12 @@
 
     nvim-nixos = {
       url = "github:dqkqd/nvim-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    opencode = {
+      url = "github:anomalyco/opencode/dev";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # https://nix-community.github.io/home-manager/faq/unstable.html
