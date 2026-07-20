@@ -27,6 +27,8 @@
 
   # packages
   home.packages = with pkgs; [
+    age
+
     brightnessctl
     just
     git
