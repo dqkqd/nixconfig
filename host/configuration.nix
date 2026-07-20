@@ -207,6 +207,10 @@
     allowedTCPPorts = [22];
   };
 
+  sops.defaultSopsFile = ../secrets/sercets.yaml;
+  sops.age.keyFile = "/home/dqk/.config/sops/age/keys.txt";
+  sops.secrets.npm_token = {};
+
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.

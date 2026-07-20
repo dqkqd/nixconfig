@@ -27,7 +27,9 @@
 
   # packages
   home.packages = with pkgs; [
+    # secrets
     age
+    sops
 
     brightnessctl
     just

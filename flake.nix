@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # https://nix-community.github.io/home-manager/faq/unstable.html
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
@@ -31,6 +36,7 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
+    sops-nix,
     catppuccin,
     nixpkgs-unstable,
     ...
@@ -49,6 +55,7 @@
           ./host/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
