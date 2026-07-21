@@ -30,6 +30,7 @@
       startup = [
         {command = "fcitx5";}
         {command = "swaymsg workspace 1";}
+        {command = "keepassxc";}
       ];
       keybindings = lib.mkOptionDefault {
         "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";

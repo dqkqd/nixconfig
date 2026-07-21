@@ -28,6 +28,11 @@
           installation_mode = "force_installed";
           updates_disabled = true;
         };
+        "keepassxc-browser@keepassxc.org" = {
+          install_url = moz "keepassxc-browser";
+          installation_mode = "force_installed";
+          updates_disabled = true;
+        };
       };
     };
 

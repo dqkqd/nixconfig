@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./firefox.nix
+    ./keepassxc.nix
     ./mcp.nix
     ./opencode.nix
     ./skills.nix
@@ -115,6 +116,7 @@
       "x-scheme-handler/unknown" = "firefox.desktop";
     };
   };
+  xdg.autostart.enable = true;
   xdg.configFile = {
     "jj/config.toml".source = ./jujutsu.toml;
   };
