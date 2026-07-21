@@ -118,10 +118,6 @@
   xdg.configFile = {
     "jj/config.toml".source = ./jujutsu.toml;
   };
-  home.file.".npmrc" = {
-    text = "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}\n";
-    force = true;
-  };
   home.sessionVariables = {
     EDITOR = "nvim";
     # fcitx5

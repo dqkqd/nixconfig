@@ -207,9 +207,18 @@
     allowedTCPPorts = [22];
   };
 
-  sops.defaultSopsFile = ../secrets/sercets.yaml;
-  sops.age.keyFile = "/home/dqk/.config/sops/age/keys.txt";
-  sops.secrets.npm_token = {};
+  sops = {
+    age.keyFile = "/home/dqk/.config/sops/age/keys.txt";
+    defaultSopsFile = ../secrets/sercets.yaml;
+    secrets.npm_token = {};
+    templates."npmrc" = {
+      content = ''
+        //registry.npmjs.org/:_authToken=${config.sops.placeholder.npm_token}
+      '';
+      path = "/home/dqk/.npmrc";
+      owner = "dqk";
+    };
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
