@@ -17,6 +17,8 @@ EOF
 }
 
 flakify() {
+  echo .direnv/ > .gitignore
+
   if [ ! -e flake.nix ]; then
     nix flake new -t github:nix-community/nix-direnv .
     direnv allow
