@@ -1,6 +1,8 @@
 let
-  name = "Khanh Duong";
-  email = "dqkqdlot@gmail.com";
+  user = {
+    name = "Khanh Duong";
+    email = "dqkqdlot@gmail.com";
+  };
 
   editor = "nvim";
   signingKey = "255D6E84B9AE57DA";
@@ -9,10 +11,8 @@ in {
     enable = true;
 
     settings = {
-      user = {
-        name = name;
-        email = email;
-      };
+      inherit user;
+
       core.editor = editor;
     };
 
@@ -25,10 +25,7 @@ in {
   programs.jujutsu = {
     enable = true;
     settings = {
-      user = {
-        name = name;
-        email = email;
-      };
+      inherit user;
 
       signing = {
         behavior = "own";
