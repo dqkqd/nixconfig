@@ -12,6 +12,9 @@
     rtkOpencode = lib.hm.dag.entryAfter ["writeBoundary"] ''
       ${pkgs.rtk}/bin/rtk init --global --opencode
     '';
+    cavemanOpencode = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      PATH="${lib.makeBinPath [pkgs.nodejs pkgs.git]}:$PATH" ${pkgs.nodejs}/bin/npx -y github:JuliusBrussee/caveman -- --only opencode
+    '';
   };
 
   programs.opencode = {
@@ -40,6 +43,7 @@
         "@simonwjackson/opencode-direnv"
         "@tarquinen/opencode-dcp@latest"
         "opencode-mem"
+        "@dietrichgebert/ponytail"
       ];
       agent = {
         zen-research = {
