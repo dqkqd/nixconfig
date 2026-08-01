@@ -75,5 +75,9 @@
       };
     };
   };
-  xdg.configFile."opencode/tui.json".force = true;
+
+  xdg.configFile = {
+    "opencode/tui.json".force = true;
+    "opencode/opencode.json".force = true;
+  };
 }
