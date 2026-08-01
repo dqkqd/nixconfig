@@ -210,7 +210,15 @@
   sops = {
     age.keyFile = "/home/dqk/.config/sops/age/keys.txt";
     defaultSopsFile = ../secrets/sercets.yaml;
-    secrets.npm_token = {};
+
+    secrets = {
+      npm_token = {};
+      context7_api_key = {
+        owner = "dqk";
+        mode = "0440";
+      };
+    };
+
     templates."npmrc" = {
       content = ''
         //registry.npmjs.org/:_authToken=${config.sops.placeholder.npm_token}

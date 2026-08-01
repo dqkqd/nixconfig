@@ -1,5 +1,6 @@
 {
   lib,
+  osConfig,
   pkgsUnstable,
   ...
 }: {
@@ -13,6 +14,9 @@
       context7 = {
         enabled = true;
         url = "https://mcp.context7.com/mcp";
+        headers = {
+          "Authorization" = "Bearer {file:${osConfig.sops.secrets.context7_api_key.path}}";
+        };
       };
       websearch = {
         enabled = true;
