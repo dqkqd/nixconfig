@@ -65,6 +65,12 @@
     mpv
 
     xdg-utils
+
+    # agents tools
+    tree
+    jq
+    ast-grep
+    python3
   ];
 
   catppuccin = {
