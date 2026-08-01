@@ -9,7 +9,7 @@
     ./git.nix
     ./keepassxc.nix
     ./mcp.nix
-    ./opencode.nix
+    ./omp.nix
     ./skills.nix
     ./sway.nix
     ./zsh.nix

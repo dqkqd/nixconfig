@@ -30,6 +30,13 @@
 
     # https://nix-community.github.io/home-manager/faq/unstable.html
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
+  };
+
+  nixConfig = {
+    extra-substituters = ["https://cache.numtide.com"];
+    extra-trusted-public-keys = ["niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="];
   };
 
   outputs = inputs @ {
