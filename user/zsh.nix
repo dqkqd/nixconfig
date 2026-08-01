@@ -3,6 +3,11 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+
+    shellAliases = {
+      sg = "ast-grep";
+    };
+
     autosuggestion = {
       enable = true;
       strategy = [
