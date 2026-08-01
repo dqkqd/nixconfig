@@ -39,6 +39,7 @@
         "superpowers@git+https://github.com/obra/superpowers.git"
         "@simonwjackson/opencode-direnv"
         "@tarquinen/opencode-dcp@latest"
+        "opencode-mem"
       ];
       agent = {
         zen-research = {
