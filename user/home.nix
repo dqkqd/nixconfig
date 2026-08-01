@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./firefox.nix
+    ./git.nix
     ./keepassxc.nix
     ./mcp.nix
     ./opencode.nix
@@ -34,7 +35,6 @@
 
     brightnessctl
     just
-    git
     uv
 
     kdePackages.okular
@@ -81,7 +81,6 @@
   programs.gh.enable = true;
   programs.fzf.enable = true;
   programs.gpg.enable = true;
-  programs.jujutsu.enable = true;
   programs.fuzzel.enable = true;
   programs.fd.enable = true;
   programs.ripgrep.enable = true;
@@ -117,9 +116,6 @@
     };
   };
   xdg.autostart.enable = true;
-  xdg.configFile = {
-    "jj/config.toml".source = ./jujutsu.toml;
-  };
   home.sessionVariables = {
     EDITOR = "nvim";
     # fcitx5
