@@ -17,7 +17,13 @@
         "--mdns"
       ];
     };
-    settings = {
+    settings = let
+      models = {
+        thinking = "opencode-go/glm-5.2";
+        balance = "opencode-go/kimi-k2.7-code";
+        cheap = "opencode-go/mimo-v2.5";
+      };
+    in {
       plugin = ["superpowers@git+https://github.com/obra/superpowers.git"];
       agent = {
         zen-research = {
@@ -32,22 +38,19 @@
         };
 
         build = {
-          model = "opencode-go/deepseek-v4-flash";
-          variant = "high";
+          model = models.cheap;
+        };
+        plan = {
+          model = models.balance;
         };
         general = {
-          model = "opencode-go/deepseek-v4-flash";
-          variant = "high";
+          model = models.cheap;
         };
         explore = {
-          model = "opencode-go/deepseek-v4-flash";
-          variant = "high";
+          model = models.cheap;
         };
         scout = {
-          mode = "subagent";
-          model = "opencode-go/deepseek-v4-flash";
-          hidden = true;
-          variant = "high";
+          model = models.cheap;
         };
       };
     };
