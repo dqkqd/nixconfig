@@ -9,8 +9,7 @@
     ./git.nix
     ./keepassxc.nix
     ./mcp.nix
-    ./omp.nix
-    ./skills.nix
+    ./pi.nix
     ./sway.nix
     ./zsh.nix
   ];

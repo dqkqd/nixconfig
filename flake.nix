@@ -18,11 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    opencode = {
-      url = "github:anomalyco/opencode/dev";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
