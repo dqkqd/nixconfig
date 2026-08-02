@@ -46,17 +46,6 @@
         "@dietrichgebert/ponytail"
       ];
       agent = {
-        zen-research = {
-          prompt = builtins.readFile ./agents/zen-researcher.md;
-          permission = {
-            "*" = "deny";
-            webfetch = "allow";
-            skill = "allow";
-            websearch = "allow";
-            question = "allow";
-          };
-        };
-
         build = {
           model = models.cheap;
         };
