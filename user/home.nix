@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   ...
@@ -135,6 +136,19 @@
       frequency = "weekly";
       store.cleanup = true;
       timestamp = "-7 days";
+    };
+  };
+
+  sops = {
+    age.keyFile = "/home/dqk/.config/sops/age/keys.txt";
+    defaultSopsFile = ../secrets/sercets.yaml;
+
+    secrets.npm_token = {};
+    templates."npmrc" = {
+      content = ''
+        //registry.npmjs.org/:_authToken=${config.sops.placeholder.npm_token}
+      '';
+      path = "/home/dqk/.npmrc";
     };
   };
 

@@ -36,7 +36,6 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    sops-nix,
     catppuccin,
     nixpkgs-unstable,
     ...
@@ -55,7 +54,6 @@
           ./host/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2
           home-manager.nixosModules.home-manager
-          sops-nix.nixosModules.sops
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -71,6 +69,7 @@
               imports = [
                 ./user/home.nix
                 catppuccin.homeModules.catppuccin
+                inputs.sops-nix.homeManagerModules.sops
               ];
             };
           })

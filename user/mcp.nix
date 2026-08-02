@@ -1,12 +1,20 @@
 {
   lib,
-  osConfig,
+  config,
   pkgsUnstable,
   ...
 }: {
   home.packages = [
     pkgsUnstable.codegraph
   ];
+
+  sops = {
+    secrets = {
+      context7_api_key = {
+        mode = "0440";
+      };
+    };
+  };
 
   programs.mcp = {
     enable = true;
@@ -15,7 +23,7 @@
         enabled = true;
         url = "https://mcp.context7.com/mcp";
         headers = {
-          "Authorization" = "Bearer {file:${osConfig.sops.secrets.context7_api_key.path}}";
+          "Authorization" = "Bearer {file:${config.sops.secrets.context7_api_key.path}}";
         };
       };
       websearch = {
