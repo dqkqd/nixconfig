@@ -40,6 +40,8 @@ in {
       source = ./extensions;
       recursive = true;
     };
+
+    ".pi/agent/AGENTS.md".source = ./AGENTS.md;
   };
 
   sops.secrets."pi/default_provider" = {};
@@ -56,6 +58,4 @@ in {
       enableAnalytics = false;
     };
   };
-
-  home.file.".pi/agent/AGENTS.md".source = ./AGENTS.md;
 }

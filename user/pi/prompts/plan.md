@@ -2,6 +2,7 @@
 description: Turn a goal into an implementation plan
 argument-hint: "[goal]"
 ---
+
 Act as a planner. DO NOT IMPLEMENT.
 
 - Ask questions about decisions the codebase can't answer, with proposed defaults.

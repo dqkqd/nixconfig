@@ -1,8 +1,4 @@
-{
-  config,
-  programs,
-  ...
-}: {
+{config, ...}: {
   programs.keepassxc = {
     enable = true;
 
