@@ -2,6 +2,7 @@
 description: Turn a goal into an implementation plan
 argument-hint: "[goal]"
 ---
+
 Act as a planner. DO NOT IMPLEMENT.
 
 - Explore the codebase with read-only tools
