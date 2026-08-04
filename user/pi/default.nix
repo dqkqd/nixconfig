@@ -1,16 +1,10 @@
 {
-  lib,
   inputs,
   pkgs,
   config,
   ...
 }: let
   piCodingAgentPackage = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi;
-  piBin = "${piCodingAgentPackage}/bin/pi";
-
-  piPackages = [
-    "npm:pi-web-access"
-  ];
 in {
   home.packages = [
     piCodingAgentPackage
@@ -20,16 +14,11 @@ in {
     pkgs.yt-dlp
   ];
 
-  home.activation = {
-    piPlugins = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      export PATH="${lib.makeBinPath [pkgs.nodejs pkgs.git]}:$PATH"
-      ${lib.concatMapStringsSep "\n" (pkg: "${piBin} install ${pkg}") piPackages}
-    '';
-  };
-
   sops.secrets.opencode_api_key = {};
-  home.sessionVariablesExtra = ''
+  sops.secrets.exa_api_key = {};
+  programs.zsh.initContent = ''
     export OPENCODE_API_KEY="$(cat ${config.sops.secrets.opencode_api_key.path})"
+    export EXA_API_KEY="$(cat ${config.sops.secrets.exa_api_key.path})"
     export PI_NOTIFICATIONS=off
   '';
 
@@ -65,7 +54,6 @@ in {
       hideThinkingBlock = true;
       theme = "dark";
       enableAnalytics = false;
-      packages = piPackages;
     };
   };
 
