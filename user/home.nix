@@ -10,7 +10,7 @@
     ./git.nix
     ./keepassxc.nix
     ./mcp.nix
-    ./pi.nix
+    ./pi
     ./sway.nix
     ./zsh.nix
   ];

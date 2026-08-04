@@ -23,7 +23,6 @@ in {
   home.activation = {
     piPlugins = lib.hm.dag.entryAfter ["writeBoundary"] ''
       export PATH="${lib.makeBinPath [pkgs.nodejs pkgs.git]}:$PATH"
-      ${piBin} install npm:pi-web-access
       ${lib.concatMapStringsSep "\n" (pkg: "${piBin} install ${pkg}") piPackages}
     '';
   };
@@ -36,11 +35,11 @@ in {
 
   # prompts
   home.file = {
-    ".pi/agent/prompts/plan.md".source = ./agents/prompts/plan.md;
+    ".pi/agent/prompts/plan.md".source = ./prompts/plan.md;
     # skills
-    ".agents/skills/nix-shell-run/SKILL.md".source = ./agents/skills/nix-shell-run/SKILL.md;
+    ".agents/skills/nix-shell-run/SKILL.md".source = ./skills/nix-shell-run/SKILL.md;
     # extensions
-    ".pi/agent/extensions/questions.ts".source = ./agents/extensions/questions.ts;
+    ".pi/agent/extensions/questions.ts".source = ./extensions/questions.ts;
   };
 
   home.file.".pi/agent/settings.json" = {
@@ -56,7 +55,5 @@ in {
     };
   };
 
-  home.file.".pi/agent/AGENTS.md" = {
-    text = builtins.readFile ./agents/AGENTS.md;
-  };
+  home.file.".pi/agent/AGENTS.md".source = ./AGENTS.md;
 }
