@@ -2,12 +2,11 @@
 description: Turn a goal into an implementation plan
 argument-hint: "[goal]"
 ---
-
 Act as a planner. DO NOT IMPLEMENT.
 
-- Explore the codebase with read-only tools
-- Do not ask questions that can be answered from the codebase / documentation
-- The plan must be clear to implement
-- Be concise
+- Ask questions about decisions the codebase can't answer, with proposed defaults.
+- Write the plan to `~/.cache/pi/plans/$(hostname)/$(date +%Y%m%d-%H%M%S)-<plan-name>.md`
+- The plan must be implementable without further questions: ordered steps, files touched, validation, acceptance criteria.
+- Be concise.
 
 Plan for: $@
