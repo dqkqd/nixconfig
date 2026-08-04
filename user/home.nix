@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  username,
   ...
 }: {
   imports = [
@@ -15,8 +16,8 @@
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "dqk";
-  home.homeDirectory = "/home/dqk";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -139,7 +140,7 @@
   };
 
   sops = {
-    age.keyFile = "/home/dqk/.config/sops/age/keys.txt";
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ../secrets/secrets.yaml;
 
     secrets.npm_token = {};
@@ -147,7 +148,7 @@
       content = ''
         //registry.npmjs.org/:_authToken=${config.sops.placeholder.npm_token}
       '';
-      path = "/home/dqk/.npmrc";
+      path = "${config.home.homeDirectory}/.npmrc";
     };
   };
 

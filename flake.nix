@@ -1,5 +1,5 @@
 {
-  description = "dqk NixOS configuration";
+  description = "NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
@@ -43,11 +43,13 @@
     ...
   }: let
     system = "x86_64-linux";
+    username = "dqk";
   in {
     nixosConfigurations = {
       legend = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
+          inherit username;
           pkgsUnstable = import nixpkgs-unstable {
             inherit system;
           };
@@ -60,14 +62,14 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
-              inherit inputs;
+              inherit username inputs;
               pkgsUnstable = import nixpkgs-unstable {
                 inherit system;
                 config = config.nixpkgs.config;
                 overlays = config.nixpkgs.overlays;
               };
             };
-            home-manager.users.dqk = {
+            home-manager.users.${username} = {
               imports = [
                 ./user/home.nix
                 catppuccin.homeModules.catppuccin

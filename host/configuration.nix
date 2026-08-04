@@ -5,6 +5,7 @@
   config,
   pkgs,
   pkgsUnstable,
+  username,
   ...
 }: {
   imports = [
@@ -80,7 +81,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
-  users.users.dqk = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = ["wheel" "video" "docker"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;

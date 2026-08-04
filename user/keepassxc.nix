@@ -1,4 +1,8 @@
 {
+  config,
+  programs,
+  ...
+}: {
   programs.keepassxc = {
     enable = true;
 
@@ -6,7 +10,7 @@
 
     settings = {
       General = {
-        LastDatabases = "/home/dqk/.kp/kp.kdbx";
+        LastDatabases = "${config.home.homeDirectory}/.kp/kp.kdbx";
       };
 
       GUI = {
