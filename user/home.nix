@@ -140,7 +140,7 @@
 
   sops = {
     age.keyFile = "/home/dqk/.config/sops/age/keys.txt";
-    defaultSopsFile = ../secrets/sercets.yaml;
+    defaultSopsFile = ../secrets/secrets.yaml;
 
     secrets.npm_token = {};
     templates."npmrc" = {
