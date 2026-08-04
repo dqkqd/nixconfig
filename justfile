@@ -16,6 +16,16 @@ lint:
     deadnix .
     gitleaks detect --source . --verbose --redact
     markdownlint-cli2 "**/*.md"
+    just tslint
+    just tscheck
+
+# TypeScript lint & typecheck
+# Requires: npm install (see package.json)
+tslint:
+    eslint "**/*.ts"
+
+tscheck:
+    tsc --noEmit
 
 # Run all local checks (format check + lint + flake eval)
 check:

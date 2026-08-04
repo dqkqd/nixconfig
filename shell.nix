@@ -29,6 +29,10 @@ pkgs.mkShellNoCC {
     deadnix
     gitleaks
     markdownlint-cli2
+    # typescript
+    nodejs
+    typescript
+    eslint
     # local ci testing
     act
   ];

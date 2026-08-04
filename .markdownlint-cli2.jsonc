@@ -1,4 +1,5 @@
 {
+  "ignores": ["node_modules/**", ".direnv/**", ".jj/**", ".git/**", "result*"],
   "config": {
     "MD013": false,
     "MD024": false,

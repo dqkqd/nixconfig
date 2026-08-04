@@ -16,7 +16,7 @@ includes = ["*.nix"]
 [formatter.biome]
 command = "biome"
 options = ["format", "--write"]
-includes = ["*.css", "*.json"]
+includes = ["*.css", "*.json", "*.ts"]
 
 [formatter.markdown]
 command = "prettier"

@@ -63,6 +63,9 @@ jobs:
       - name: Run markdownlint
         run: nix-shell shell.nix --run "markdownlint-cli2 '**/*.md'"
 
+      - name: Typecheck & lint TypeScript
+        run: nix-shell shell.nix --run "npm ci && just tscheck && just tslint"
+
   flake-check:
     name: Flake check
     runs-on: ubuntu-latest
