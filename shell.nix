@@ -28,6 +28,7 @@ pkgs.mkShellNoCC {
     statix
     deadnix
     gitleaks
+    markdownlint-cli2
     # local ci testing
     act
   ];

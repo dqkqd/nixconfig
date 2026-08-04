@@ -60,6 +60,9 @@ jobs:
       - name: Run gitleaks
         run: nix-shell shell.nix --run "gitleaks detect --source . --verbose --redact"
 
+      - name: Run markdownlint
+        run: nix-shell shell.nix --run "markdownlint-cli2 '**/*.md'"
+
   flake-check:
     name: Flake check
     runs-on: ubuntu-latest

@@ -15,6 +15,7 @@ lint:
     statix check .
     deadnix .
     gitleaks detect --source . --verbose --redact
+    markdownlint-cli2 "**/*.md"
 
 # Run all local checks (format check + lint + flake eval)
 check:
