@@ -385,6 +385,7 @@ export default function questionsExtension(pi: ExtensionAPI) {
 			if (entry.type !== "custom") continue;
 			if (entry.customType === "qa-draft") pending = entry.data as QADraft;
 			else if (entry.customType === "qa-answered") pending = null;
+			else if (entry.customType === "qa-dismissed") pending = null;
 		}
 		pendingDraft = pending;
 		if (!pending) return;
@@ -394,7 +395,15 @@ export default function questionsExtension(pi: ExtensionAPI) {
 
 		// Re-open the questionnaire with the draft's questions and partial answers.
 		const result = await runQuestionnaire(ctx, pending.questions, pending.answers);
-		if (!result || result.cancelled) return;
+		if (!result || result.cancelled) {
+			// Remember the user aborted, so it doesn't re-open on every reload.
+			pi.appendEntry("qa-dismissed", {
+				questions: pending.questions,
+				updatedAt: Date.now(),
+			});
+			pendingDraft = null;
+			return;
+		}
 
 		pi.appendEntry("qa-answered", {
 			questions: result.questions,
@@ -453,6 +462,12 @@ export default function questionsExtension(pi: ExtensionAPI) {
 
 			const result = await runQuestionnaire(ctx, questions);
 			if (!result || result.cancelled) {
+				// Remember the user aborted, so it doesn't re-open on every reload.
+				pi.appendEntry("qa-dismissed", {
+					questions,
+					updatedAt: Date.now(),
+				});
+				pendingDraft = null;
 				return {
 					content: [{ type: "text", text: "User cancelled the questions" }],
 					details: { questions, answers: [], cancelled: true },
