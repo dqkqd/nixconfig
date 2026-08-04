@@ -33,13 +33,24 @@ in {
     export PI_NOTIFICATIONS=off
   '';
 
-  # prompts
   home.file = {
-    ".pi/agent/prompts/plan.md".source = ./prompts/plan.md;
+    # prompts
+    ".pi/agent/prompts" = {
+      source = ./prompts;
+      recursive = true;
+    };
+
     # skills
-    ".agents/skills/nix-shell-run/SKILL.md".source = ./skills/nix-shell-run/SKILL.md;
+    ".pi/agent/skills" = {
+      source = ./skills;
+      recursive = true;
+    };
+
     # extensions
-    ".pi/agent/extensions/questions.ts".source = ./extensions/questions.ts;
+    ".pi/agent/extensions" = {
+      source = ./extensions;
+      recursive = true;
+    };
   };
 
   sops.secrets."pi/default_provider" = {};
