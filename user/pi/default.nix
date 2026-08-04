@@ -28,7 +28,7 @@ in {
   };
 
   sops.secrets.opencode_api_key = {};
-  programs.zsh.initContent = ''
+  home.sessionVariablesExtra = ''
     export OPENCODE_API_KEY="$(cat ${config.sops.secrets.opencode_api_key.path})"
     export PI_NOTIFICATIONS=off
   '';
@@ -42,11 +42,14 @@ in {
     ".pi/agent/extensions/questions.ts".source = ./extensions/questions.ts;
   };
 
-  home.file.".pi/agent/settings.json" = {
-    force = true;
-    text = builtins.toJSON {
-      defaultProvider = "opencode-go";
-      defaultModel = "deepseek-v4-flash";
+  sops.secrets."pi/default_provider" = {};
+  sops.secrets."pi/default_model" = {};
+  sops.templates."pi-settings" = {
+    path = "${config.home.homeDirectory}/.pi/agent/settings.json";
+    mode = "0400";
+    content = builtins.toJSON {
+      defaultProvider = config.sops.placeholder."pi/default_provider";
+      defaultModel = config.sops.placeholder."pi/default_model";
       defaultThinkingLevel = "high";
       hideThinkingBlock = true;
       theme = "dark";
