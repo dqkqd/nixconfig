@@ -9,7 +9,6 @@
     ./firefox.nix
     ./git.nix
     ./keepassxc.nix
-    ./mcp.nix
     ./pi
     ./sway.nix
     ./zsh.nix
