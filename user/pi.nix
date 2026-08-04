@@ -37,6 +37,8 @@ in {
   # prompts
   home.file = {
     ".pi/agent/prompts/plan.md".source = ./agents/prompts/plan.md;
+    # skills
+    ".agents/skills/nix-shell-run/SKILL.md".source = ./agents/skills/nix-shell-run/SKILL.md;
   };
 
   home.file.".pi/agent/settings.json" = {
