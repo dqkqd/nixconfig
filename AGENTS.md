@@ -12,7 +12,7 @@ NixOS + Home Manager flake (26.05).
 
 ```bash
 just fmt             # format everything (alejandra, prettier, …)
-just lint            # statix, deadnix, gitleaks, markdownlint-cli2
+just lint            # statix, deadnix, gitleaks, markdownlint, biome, eslint, tsc
 just check           # fmt-check + lint + nix flake check --no-build --show-trace
 just build           # USER-ONLY: system rebuild
 just update          # nix flake update
@@ -22,3 +22,4 @@ just update          # nix flake update
 
 - Run lint, fmt, check before finishing
 - **NEVER** run `just build`, `sudo nixos-rebuild switch`
+- Missing shell tool? Tell the user to add it to `shell.nix`/`package.json` — no `nix-shell -p` or temp workarounds.

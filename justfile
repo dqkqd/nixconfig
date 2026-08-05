@@ -5,10 +5,12 @@ default:
 # Format all files with one command
 fmt:
     treefmt
+    biome format --write .
 
 # Check formatting without writing files
 fmt-check:
     treefmt --fail-on-change --no-cache
+    biome format .
 
 # Run all linters
 lint:
@@ -16,15 +18,8 @@ lint:
     deadnix .
     gitleaks detect --source . --verbose --redact
     markdownlint-cli2 "**/*.md"
-    just tslint
-    just tscheck
-
-# TypeScript lint & typecheck
-# Requires: npm install (see package.json)
-tslint:
-    eslint "**/*.ts"
-
-tscheck:
+    biome check --error-on-warnings .
+    eslint .
     tsc --noEmit
 
 # Run all local checks (format check + lint + flake eval)

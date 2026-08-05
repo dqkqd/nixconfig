@@ -50,7 +50,8 @@ function parseArgs(argv) {
   if (help) return { help: true, query: "", numResults: DEFAULT_RESULTS };
 
   const query = argv.find((a) => !a.startsWith("--"));
-  if (!query) throw new Error('Missing query. Usage: node web-search.mjs "query" [--num-results N]');
+  if (!query)
+    throw new Error('Missing query. Usage: node web-search.mjs "query" [--num-results N]');
 
   let numResults = DEFAULT_RESULTS;
   const flagIdx = argv.indexOf("--num-results");
@@ -74,7 +75,8 @@ function parseArgs(argv) {
  */
 async function searchExa(query, numResults) {
   const key = process.env.EXA_API_KEY?.trim();
-  if (!key) throw new Error("EXA_API_KEY is not set. Get a key at https://dashboard.exa.ai/api-keys");
+  if (!key)
+    throw new Error("EXA_API_KEY is not set. Get a key at https://dashboard.exa.ai/api-keys");
 
   const res = await fetch("https://api.exa.ai/search", {
     method: "POST",
@@ -89,7 +91,9 @@ async function searchExa(query, numResults) {
   });
   const data = await res.json();
   if (!res.ok) {
-    throw new Error(`API error (HTTP ${res.status}): ${data.error ?? data.message ?? res.statusText}`);
+    throw new Error(
+      `API error (HTTP ${res.status}): ${data.error ?? data.message ?? res.statusText}`,
+    );
   }
   return data.results ?? [];
 }
@@ -106,7 +110,7 @@ async function searchExaMcp(query, numResults) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json, text/event-stream",
+      Accept: "application/json, text/event-stream",
     },
     body: JSON.stringify({
       jsonrpc: "2.0",
@@ -159,11 +163,13 @@ function parseMcpResponse(body) {
 
 /**
  * Extract the first non-empty text item from an MCP result.
- * @param {{content?: Array<{type?: string, text?: string}>}} result
+ * @param {{content?: Array<{type?: string, text?: string}>}} [result]
  * @returns {string}
  */
 function extractMcpText(result) {
-  return result?.content?.find((item) => item.type === "text" && item.text?.trim())?.text?.trim() ?? "";
+  return (
+    result?.content?.find((item) => item.type === "text" && item.text?.trim())?.text?.trim() ?? ""
+  );
 }
 
 /**
@@ -205,7 +211,13 @@ function parseMcpResults(text) {
     }
     snippet = snippet.replace(/\n---\s*$/, "").trim();
 
-    results.push({ title, url, publishedDate: null, author: null, highlights: snippet ? [snippet] : [] });
+    results.push({
+      title,
+      url,
+      publishedDate: null,
+      author: null,
+      highlights: snippet ? [snippet] : [],
+    });
   }
   return results;
 }

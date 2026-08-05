@@ -9,7 +9,9 @@
     "esModuleInterop": true,
     "types": ["node"],
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "allowJs": true,
+    "checkJs": true
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "**/*.mjs"]
 }
