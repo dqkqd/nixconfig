@@ -1,0 +1,4 @@
+# Consumed by shfmt (and editors) for shell formatting.
+[*.sh]
+indent_style = space
+indent_size = 2

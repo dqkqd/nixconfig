@@ -23,12 +23,14 @@ pkgs.mkShellNoCC {
     prettier
     stylua
     taplo
+    shfmt
 
     # linting
     statix
     deadnix
     gitleaks
     markdownlint-cli2
+    shellcheck
     # typescript
     nodejs
     typescript
