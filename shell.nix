@@ -35,5 +35,7 @@ pkgs.mkShellNoCC {
     eslint
     # local ci testing
     act
+
+    typescript-go
   ];
 }
