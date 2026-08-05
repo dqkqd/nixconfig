@@ -5,6 +5,27 @@
   ...
 }: let
   piCodingAgentPackage = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi;
+
+  piReviewSrc = pkgs.fetchFromGitHub {
+    owner = "earendil-works";
+    repo = "pi-review";
+    rev = "f1de050504936046c0f85b21fec0e0a93ef394eb";
+    hash = "sha256-bvdJjLudTd9YQF8ip30jIvi6MY3MAcw5GXVONx1DLuQ=";
+  };
+
+  extensions = pkgs.linkFarm "extensions" (
+    map (name: {
+      inherit name;
+      path = ./extensions + "/${name}";
+    })
+    (builtins.attrNames (builtins.readDir ./extensions))
+    ++ [
+      {
+        name = "review.ts";
+        path = "${piReviewSrc}/review.ts";
+      }
+    ]
+  );
 in {
   home.packages = [
     piCodingAgentPackage
@@ -35,9 +56,8 @@ in {
       recursive = true;
     };
 
-    # extensions
     ".pi/agent/extensions" = {
-      source = ./extensions;
+      source = extensions;
       recursive = true;
     };
 
