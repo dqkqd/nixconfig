@@ -39,5 +39,7 @@ pkgs.mkShellNoCC {
     act
 
     typescript-go
+
+    just
   ];
 }

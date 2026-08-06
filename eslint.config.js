@@ -1,5 +1,5 @@
-import gitignore from "eslint-config-flat-gitignore";
 import js from "@eslint/js";
+import gitignore from "eslint-config-flat-gitignore";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 

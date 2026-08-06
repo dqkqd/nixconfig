@@ -2,22 +2,12 @@
 default:
     @just --list
 
-# Bash files, respecting gitignore
-BASH_FILES := shell("git ls-files -co --exclude-standard '*.sh'")
-
-# Format all files with one command
 fmt:
-    treefmt --no-cache
-    biome format --write .
-    shfmt -w {{BASH_FILES}}
+    treefmt
 
-# Check formatting without writing files
 fmt-check:
-    treefmt --fail-on-change --no-cache
-    biome format .
-    shfmt -d {{BASH_FILES}}
+    treefmt --ci
 
-# Run all linters
 lint:
     statix check .
     deadnix .
@@ -26,11 +16,10 @@ lint:
     biome check --error-on-warnings .
     eslint .
     tsc --noEmit
-    shellcheck -S warning {{BASH_FILES}}
+    shellcheck $(git ls-files "*.sh")
 
-# Run all local checks (format check + lint + flake eval)
 check:
-    treefmt --fail-on-change --no-cache
+    just fmt-check
     just lint
     nix flake check --no-build --show-trace
 

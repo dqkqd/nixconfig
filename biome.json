@@ -21,8 +21,19 @@
       "enabled": true
     }
   },
-  "files": {
-    "ignoreUnknown": true,
-    "includes": ["**/*.mjs"]
-  }
+  "overrides": [
+    {
+      "includes": ["**/*.css"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useGenericFontNames": "off"
+          },
+          "correctness": {
+            "noUnknownTypeSelector": "off"
+          }
+        }
+      }
+    }
+  ]
 }

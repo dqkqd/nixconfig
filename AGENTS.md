@@ -11,7 +11,8 @@ NixOS + Home Manager flake (26.05).
 ## Commands
 
 ```bash
-just fmt             # format everything (alejandra, prettier, biome, shfmt, …)
+just fmt             # format everything via treefmt (alejandra, biome, prettier, taplo, stylua, shfmt)
+just fmt-check       # treefmt --ci (used by CI)
 just lint            # statix, deadnix, gitleaks, markdownlint, biome, eslint, tsc, shellcheck
 just check           # fmt-check + lint + nix flake check --no-build --show-trace
 just build           # USER-ONLY: system rebuild

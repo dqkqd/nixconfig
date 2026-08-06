@@ -47,13 +47,18 @@ parse_args() {
       echo "error: unknown option: $1" >&2
       exit 2
       ;;
-    *) [[ -z "$repo" ]] && repo="$1" || {
-      echo "error: unexpected argument: $1" >&2
-      exit 2
-    } ;;
+    *)
+      if [[ -z "$repo" ]]; then
+        repo="$1"
+      else
+        echo "error: unexpected argument: $1" >&2
+        exit 2
+      fi
+      ;;
     esac
     shift
   done
+
   [[ -n "$repo" ]] || {
     usage
     exit 1

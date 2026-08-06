@@ -400,7 +400,7 @@ export default function questionsExtension(pi: ExtensionAPI) {
     }
     if (!pending) return;
 
-    const unanswered = pending.questions.some((q) => !pending!.answers.some((a) => a.id === q.id));
+    const unanswered = pending.questions.some((q) => !pending?.answers.some((a) => a.id === q.id));
     if (!unanswered) return;
 
     // Re-open the questionnaire with the draft's questions and partial answers.
