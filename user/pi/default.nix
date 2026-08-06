@@ -4,8 +4,6 @@
   config,
   ...
 }: let
-  piCodingAgentPackage = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi;
-
   piReviewSrc = pkgs.fetchFromGitHub {
     owner = "earendil-works";
     repo = "pi-review";
@@ -28,11 +26,7 @@
   );
 in {
   home.packages = [
-    piCodingAgentPackage
-
-    # require for pi-web-access
-    pkgs.ffmpeg
-    pkgs.yt-dlp
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
   ];
 
   sops.secrets.opencode_api_key = {};
