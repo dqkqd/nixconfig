@@ -38,13 +38,11 @@ in {
   '';
 
   home.file = {
-    # prompts
     ".pi/agent/prompts" = {
       source = ./prompts;
       recursive = true;
     };
 
-    # skills
     ".pi/agent/skills" = {
       source = ./skills;
       recursive = true;
