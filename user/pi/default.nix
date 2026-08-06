@@ -48,6 +48,11 @@ in {
       recursive = true;
     };
 
+    ".pi/agent/themes" = {
+      source = ./themes;
+      recursive = true;
+    };
+
     ".pi/agent/extensions" = {
       source = extensions;
       recursive = true;
@@ -66,7 +71,7 @@ in {
       defaultModel = config.sops.placeholder."pi/default_model";
       defaultThinkingLevel = "high";
       hideThinkingBlock = true;
-      theme = "dark";
+      theme = "catppuccin-mocha";
       enableAnalytics = false;
     };
   };
