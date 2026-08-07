@@ -54,9 +54,6 @@ in {
       skills = [
         ./skills
       ];
-      prompts = [
-        ./prompts
-      ];
       themes = [
         ./themes/catppuccin-mocha.json
       ];
