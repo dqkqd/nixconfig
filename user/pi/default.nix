@@ -27,7 +27,7 @@ in {
   programs.zsh.initContent = ''
     export OPENCODE_API_KEY="$(cat ${config.sops.secrets.opencode_api_key.path})"
     export EXA_API_KEY="$(cat ${config.sops.secrets.exa_api_key.path})"
-    export PI_NOTIFICATIONS=off
+    export PI_SKIP_VERSION_CHECK=1
   '';
 
   home.file = {
