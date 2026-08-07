@@ -1,6 +1,6 @@
 ---
 name: librarian
-description: Cache and refresh remote git repositories under ~/.cache/checkouts/<host>/<org>/<repo> so future references can reuse a local copy.
+description: Cache remote git repos under ~/.cache/checkouts/<host>/<org>/<repo>. Reuse for reading code, inspecting pinned commits/tags, and diffing versions — instead of per-file API calls.
 ---
 
 # Librarian
@@ -11,6 +11,7 @@ Provides a reusable local checkout of remote git repositories (GitHub/GitLab/Bit
 
 - A remote git repository (URL, `git@...`, `owner/repo`) is referenced as source material
 - Clone the repo and inspect it locally instead of fetching files one by one
+- Inspect a file at a pinned commit/tag, or diff the same file across versions — read the checkout locally instead of per-file API calls
 - Re-reading the same repo multiple times — reuse the cached checkout
 
 ## Cache location
