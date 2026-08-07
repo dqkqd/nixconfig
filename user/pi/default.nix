@@ -10,20 +10,6 @@
     rev = "f1de050504936046c0f85b21fec0e0a93ef394eb";
     hash = "sha256-bvdJjLudTd9YQF8ip30jIvi6MY3MAcw5GXVONx1DLuQ=";
   };
-
-  extensions = pkgs.linkFarm "extensions" (
-    map (name: {
-      inherit name;
-      path = ./extensions + "/${name}";
-    })
-    (builtins.attrNames (builtins.readDir ./extensions))
-    ++ [
-      {
-        name = "review.ts";
-        path = "${piReviewSrc}/review.ts";
-      }
-    ]
-  );
 in {
   home.packages = [
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
@@ -38,26 +24,6 @@ in {
   '';
 
   home.file = {
-    ".pi/agent/prompts" = {
-      source = ./prompts;
-      recursive = true;
-    };
-
-    ".pi/agent/skills" = {
-      source = ./skills;
-      recursive = true;
-    };
-
-    ".pi/agent/themes" = {
-      source = ./themes;
-      recursive = true;
-    };
-
-    ".pi/agent/extensions" = {
-      source = extensions;
-      recursive = true;
-    };
-
     ".pi/agent/AGENTS.md".source = ./AGENTS.md;
   };
 
@@ -72,6 +38,19 @@ in {
       defaultThinkingLevel = "high";
       hideThinkingBlock = true;
       theme = "catppuccin-mocha";
+      extensions = [
+        ./extensions
+        "${piReviewSrc}/review.ts"
+      ];
+      skills = [
+        ./skills
+      ];
+      prompts = [
+        ./prompts
+      ];
+      themes = [
+        ./themes/catppuccin-mocha.json
+      ];
       enableAnalytics = false;
     };
   };
