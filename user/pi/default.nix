@@ -10,6 +10,13 @@
     rev = "f1de050504936046c0f85b21fec0e0a93ef394eb";
     hash = "sha256-bvdJjLudTd9YQF8ip30jIvi6MY3MAcw5GXVONx1DLuQ=";
   };
+
+  piSrc = pkgs.fetchFromGitHub {
+    owner = "earendil-works";
+    repo = "pi";
+    rev = "1dd2354052f7dd9fcdcc3097b87cf4b377853a74";
+    hash = "sha256-l/HiMKk83Pr5yDjFe+n0+tb9YvtNFoLTEpCFjEmUXKc=";
+  };
 in {
   home.packages = [
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
@@ -41,6 +48,8 @@ in {
       extensions = [
         ./extensions
         "${piReviewSrc}/review.ts"
+        "${piSrc}/packages/coding-agent/examples/extensions/questionnaire.ts"
+        "${piSrc}/packages/coding-agent/examples/extensions/todo.ts"
       ];
       skills = [
         ./skills
