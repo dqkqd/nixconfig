@@ -17,6 +17,7 @@ lint:
     eslint .
     tsc --noEmit
     shellcheck $(git ls-files "*.sh")
+    typos
 
 check:
     just fmt-check

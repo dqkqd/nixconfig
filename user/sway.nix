@@ -156,7 +156,7 @@
           format = "{icon}  {capacity}%";
           format-charging = " {icon}  {capacity}%";
           format-icons = ["" "" "" "" ""];
-          tooltip-format = "{timeTo}, charged cylcles: {cycles}, health: {health}%";
+          tooltip-format = "{timeTo}, charged cycles: {cycles}, health: {health}%";
           max-length = 25;
         };
 

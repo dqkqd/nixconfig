@@ -31,6 +31,7 @@ pkgs.mkShellNoCC {
     gitleaks
     markdownlint-cli2
     shellcheck
+    typos
     # typescript
     nodejs
     typescript
