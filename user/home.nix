@@ -3,8 +3,21 @@
   pkgs,
   inputs,
   username,
+  pkgsUnstable,
   ...
-}: {
+}: let
+  gh-image = pkgsUnstable.buildGoModule rec {
+    pname = "gh-image";
+    version = "1.2.0";
+    src = pkgsUnstable.fetchFromGitHub {
+      owner = "drogers0";
+      repo = "gh-image";
+      rev = "v${version}";
+      hash = "sha256-It7DivJXX0PrCRTuZr/tFq89OjheMUiyYCMs69y2qsI=";
+    };
+    vendorHash = "sha256-TzVyLcfpa3eN9bHQJnuPuGeiOgxYbBurFdKq0EfpJL4=";
+  };
+in {
   imports = [
     ./firefox.nix
     ./git.nix
@@ -84,7 +97,10 @@
   programs.eza.enable = true;
   programs.bat.enable = true;
   programs.zoxide.enable = true;
-  programs.gh.enable = true;
+  programs.gh = {
+    enable = true;
+    extensions = [gh-image];
+  };
   programs.fzf.enable = true;
   programs.gpg.enable = true;
   programs.fuzzel.enable = true;
