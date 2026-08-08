@@ -12,6 +12,7 @@
     ./keepassxc.nix
     ./pi
     ./sway.nix
+    ./tmux.nix
     ./zsh.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -81,7 +82,6 @@
   };
 
   programs.yazi.enable = true;
-  programs.tmux.enable = true;
   programs.eza.enable = true;
   programs.bat.enable = true;
   programs.zoxide.enable = true;
