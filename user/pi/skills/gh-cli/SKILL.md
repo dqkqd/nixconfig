@@ -1,11 +1,11 @@
 ---
 name: gh-cli
-description: GitHub CLI (gh) for interacting with GitHub — read PR reviews/comments and issues/comments, plus gh api for anything GitHub.
+description: GitHub CLI (gh) — read PR reviews/threads and issues, edit and comment PRs.
 ---
 
 # GitHub CLI (gh-cli)
 
-Authenticated `gh` CLI. **Read-only** — fetches PR reviews/comments and issue threads; never creates or edits.
+Authenticated `gh` CLI. Reads PR reviews/comments and issue threads; may edit PRs and comment on them. Never resolves review threads or replies to them.
 
 ## When to Use
 
@@ -22,11 +22,31 @@ gh pr view <n> --comments              # issue (& review) comments as markdown
 gh pr view <n> --json reviews          # review summaries (APPROVED / CHANGES_REQUESTED)
 ```
 
-Inline/line review comments come from the API:
+## Reviews
 
 ```bash
-gh api /repos/{owner}/{repo}/pulls/12/comments --jq '.[] | {url, path, line, author: .user.login}'
-gh api "/repos/{owner}/{repo}/pulls/12/reviews" --jq '.[] | {author: .user.login, state}'
+gh api /repos/{owner}/{repo}/pulls/<n>/reviews --paginate --jq '.[] | {author: .user.login, state, body}'
+# state: APPROVED / CHANGES_REQUESTED / COMMENTED / DISMISSED
+```
+
+## Review threads (inline comments & suggestions)
+
+Thread start has `in_reply_to_id: null`; replies carry the parent comment id. Bodies may contain `suggestion` blocks.
+
+```bash
+gh api /repos/{owner}/{repo}/pulls/<n>/comments --paginate --jq '.[] | {id, path, line, in_reply_to_id, author: .user.login, body}'
+```
+
+Resolved/outdated state — GraphQL (REST `resolved` field is unreliable):
+
+```bash
+gh api graphql -f query='
+query { repository(owner: "<owner>", name: "<repo>") { pullRequest(number: <n>) {
+  reviewThreads(first: 50) { nodes {
+    isResolved isOutdated path line
+    comments(first: 10) { nodes { author { login } body } }
+  } }
+} } }'
 ```
 
 ## Issues
@@ -43,3 +63,9 @@ gh api /repos/{owner}/{repo}/issues/12/comments --jq '.[] | {author: .user.login
 - Target another repo with `-R owner/repo`.
 - Prefer `--json` + `--jq` for structured output.
 - Add `?per_page=100` and `--paginate` to page through API results.
+
+## Rules
+
+- You may edit PR descriptions (`gh pr edit`) and comment on PRs (`gh pr comment`).
+- Never resolve review threads and never reply to them (no `gh api pulls/<n>/comments` with `in_reply_to`).
+- Everything else stays read-only — never approve/request changes, never create or edit issues.
