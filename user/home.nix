@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./firefox.nix
+    ./gh.nix
     ./git.nix
     ./keepassxc.nix
     ./pi
@@ -84,7 +85,6 @@
   programs.eza.enable = true;
   programs.bat.enable = true;
   programs.zoxide.enable = true;
-  programs.gh.enable = true;
   programs.fzf.enable = true;
   programs.gpg.enable = true;
   programs.fuzzel.enable = true;
