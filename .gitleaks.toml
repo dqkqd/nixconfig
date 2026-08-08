@@ -1,0 +1,2 @@
+[allowlist]
+regexes = ['''Shift\+Enter/Ctrl\+Enter''']
