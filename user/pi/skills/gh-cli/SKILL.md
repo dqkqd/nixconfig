@@ -16,53 +16,41 @@ Authenticated `gh` CLI. Reads PR reviews/comments and issue threads; may edit PR
 ## Pull requests
 
 ```bash
-gh pr list --state open --json number,title,author,reviewDecision
-gh pr view <n> --json title,body,state,mergedAt
+gh pr list --state open --json number,title,author,reviewDecision   # open PRs
+gh pr view <n> --json title,body,state,mergedAt                     # PR details
 gh pr view <n> --comments              # issue (& review) comments as markdown
-gh pr view <n> --json reviews          # review summaries (APPROVED / CHANGES_REQUESTED)
+gh pr view <n> --json reviews          # review summaries
 ```
 
 ## Reviews
 
 ```bash
-gh api /repos/{owner}/{repo}/pulls/<n>/reviews --paginate --jq '.[] | {author: .user.login, state, body}'
+gh api /repos/{owner}/{repo}/pulls/<n>/reviews --paginate --jq '.[] | {author: .user.login, state, body}'   # reviews with bodies
 # state: APPROVED / CHANGES_REQUESTED / COMMENTED / DISMISSED
 ```
 
 ## Review threads (inline comments & suggestions)
 
-Thread start has `in_reply_to_id: null`; replies carry the parent comment id. Bodies may contain `suggestion` blocks. `diff_hunk` is the code chunk the comment is attached to.
-
-```bash
-gh api /repos/{owner}/{repo}/pulls/<n>/comments --paginate --jq '.[] | {id, path, line, side, start_line, in_reply_to_id, author: .user.login, body, diff_hunk}'
-```
-
-Resolved/outdated state — GraphQL (REST `resolved` field is unreliable):
-
 ```bash
 gh api graphql -f query='
 query { repository(owner: "<owner>", name: "<repo>") { pullRequest(number: <n>) {
   reviewThreads(first: 50) { nodes {
-    isResolved isOutdated path line
-    comments(first: 10) { nodes { author { login } body } }
+    isResolved isOutdated path
+    comments(first: 10) { nodes {
+      author { login } body diffHunk line startLine originalLine originalStartLine
+    } }
   } }
-} } }'
+} } }' --jq '.data.repository.pullRequest.reviewThreads.nodes[] | {isResolved, isOutdated, path, comments: [.comments.nodes[] | {author: .author.login, body, diffHunk, line, startLine, originalLine, originalStartLine}]}'   # threads: resolved/outdated + commenters; outdated → originalLine
 ```
 
 ## Issues
 
 ```bash
-gh issue list --state open --json number,title,labels
-gh issue view <n> --json title,body,state,labels
+gh issue list --state open --json number,title,labels   # open issues
+gh issue view <n> --json title,body,state,labels        # issue details
 gh issue view <n> --comments           # issue + comment thread
-gh api /repos/{owner}/{repo}/issues/12/comments --jq '.[] | {author: .user.login, body}'
+gh api /repos/{owner}/{repo}/issues/12/comments --jq '.[] | {author: .user.login, body}'   # issue comments
 ```
-
-## Conventions
-
-- Target another repo with `-R owner/repo`.
-- Prefer `--json` + `--jq` for structured output.
-- Add `?per_page=100` and `--paginate` to page through API results.
 
 ## Rules
 
