@@ -31,10 +31,10 @@ gh api /repos/{owner}/{repo}/pulls/<n>/reviews --paginate --jq '.[] | {author: .
 
 ## Review threads (inline comments & suggestions)
 
-Thread start has `in_reply_to_id: null`; replies carry the parent comment id. Bodies may contain `suggestion` blocks.
+Thread start has `in_reply_to_id: null`; replies carry the parent comment id. Bodies may contain `suggestion` blocks. `diff_hunk` is the code chunk the comment is attached to.
 
 ```bash
-gh api /repos/{owner}/{repo}/pulls/<n>/comments --paginate --jq '.[] | {id, path, line, in_reply_to_id, author: .user.login, body}'
+gh api /repos/{owner}/{repo}/pulls/<n>/comments --paginate --jq '.[] | {id, path, line, side, start_line, in_reply_to_id, author: .user.login, body, diff_hunk}'
 ```
 
 Resolved/outdated state — GraphQL (REST `resolved` field is unreliable):
