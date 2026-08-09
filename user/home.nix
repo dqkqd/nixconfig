@@ -96,7 +96,7 @@
       font-family = "FiraCode Nerd Font Mono";
       keybind = [
         # https://pi.dev/docs/latest/terminal-setup#ghostty
-        "ctrl+h=alt+backspace=text:\\x1b\\x7f"
+        "alt+backspace=text:\\x1b\\x7f"
       ];
     };
   };
