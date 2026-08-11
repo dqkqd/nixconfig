@@ -38,7 +38,7 @@ in {
     content = builtins.toJSON {
       defaultProvider = config.sops.placeholder."pi/default_provider";
       defaultModel = config.sops.placeholder."pi/default_model";
-      defaultThinkingLevel = "high";
+      defaultThinkingLevel = "max";
       hideThinkingBlock = true;
       theme = "catppuccin-mocha";
       extensions = [
