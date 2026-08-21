@@ -33,6 +33,11 @@
           installation_mode = "force_installed";
           updates_disabled = true;
         };
+        "{6b733b82-9261-47ee-a595-2dda294a4d08}" = {
+          install_url = moz "yomitan";
+          installation_mode = "force_installed";
+          updates_disabled = true;
+        };
       };
     };
 
