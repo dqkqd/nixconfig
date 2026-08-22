@@ -71,8 +71,6 @@
     # agents tools
     tree
     jq
-    ast-grep
-    python3
   ];
 
   catppuccin = {
