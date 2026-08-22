@@ -20,6 +20,8 @@ in {
       key = signingKey;
       signByDefault = true;
     };
+
+    lfs.enable = true;
   };
 
   programs.jujutsu = {
