@@ -75,7 +75,7 @@
 
   catppuccin = {
     enable = true;
-    flavor = "mocha";
+    flavor = "latte";
     firefox.enable = false;
   };
 

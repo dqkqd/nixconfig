@@ -27,6 +27,49 @@
       bars = [
         {command = "waybar";}
       ];
+      output = {
+        "*" = {
+          bg = "#eff1f5 solid_color";
+        };
+      };
+      colors = {
+        background = "#eff1f5";
+        focused = {
+          border = "#8839ef";
+          background = "#8839ef";
+          text = "#eff1f5";
+          indicator = "#1e66f5";
+          childBorder = "#8839ef";
+        };
+        focusedInactive = {
+          border = "#ccd0da";
+          background = "#ccd0da";
+          text = "#4c4f69";
+          indicator = "#ccd0da";
+          childBorder = "#ccd0da";
+        };
+        unfocused = {
+          border = "#ccd0da";
+          background = "#ccd0da";
+          text = "#4c4f69";
+          indicator = "#ccd0da";
+          childBorder = "#ccd0da";
+        };
+        urgent = {
+          border = "#d20f39";
+          background = "#d20f39";
+          text = "#eff1f5";
+          indicator = "#d20f39";
+          childBorder = "#d20f39";
+        };
+        placeholder = {
+          border = "#ccd0da";
+          background = "#ccd0da";
+          text = "#4c4f69";
+          indicator = "#ccd0da";
+          childBorder = "#ccd0da";
+        };
+      };
       startup = [
         {command = "fcitx5";}
         {command = "swaymsg workspace 1";}

@@ -8,6 +8,11 @@
   min-height: 15px;
 }
 
+window#waybar {
+  background: #eff1f5;
+  color: #4c4f69;
+}
+
 #workspaces button,
 #clock,
 #network,
@@ -23,13 +28,8 @@
 #tray {
   margin: 0px 2px;
   padding: 0px 10px;
-  background-color: black;
-  color: white;
-}
-
-window#waybar {
-  background: black;
-  color: white;
+  background-color: #ccd0da;
+  color: #4c4f69;
 }
 
 #workspaces button {
@@ -39,6 +39,6 @@ window#waybar {
 }
 
 #workspaces button.focused {
-  background-color: white;
-  color: black;
+  background-color: #8839ef;
+  color: #eff1f5;
 }

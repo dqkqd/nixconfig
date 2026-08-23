@@ -40,7 +40,7 @@ in {
       defaultModel = config.sops.placeholder."pi/default_model";
       defaultThinkingLevel = "max";
       hideThinkingBlock = true;
-      theme = "catppuccin-mocha";
+      theme = "catppuccin-latte";
       extensions = [
         ./extensions
         "${piReviewSrc}/review.ts"
@@ -54,7 +54,7 @@ in {
         ./prompts
       ];
       themes = [
-        ./themes/catppuccin-mocha.json
+        ./themes/catppuccin-latte.json
       ];
       enableAnalytics = false;
     };
