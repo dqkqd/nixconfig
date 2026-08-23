@@ -68,6 +68,8 @@
 
     xdg-utils
 
+    dufs
+
     # agents tools
     tree
     jq
