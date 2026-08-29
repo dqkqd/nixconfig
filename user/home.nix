@@ -81,6 +81,7 @@
     firefox.enable = false;
   };
 
+  programs.dbeaver.enable = true;
   programs.yazi.enable = true;
   programs.eza.enable = true;
   programs.bat.enable = true;
