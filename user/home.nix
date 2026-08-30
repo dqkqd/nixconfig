@@ -143,7 +143,7 @@
   };
 
   sops = {
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    age.keyFile = "/var/lib/sops-nix/keys.txt";
     defaultSopsFile = ../secrets/secrets.yaml;
 
     secrets.npm_token = {};

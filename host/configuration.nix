@@ -12,6 +12,12 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+
+  sops = {
+    age.keyFile = "/var/lib/sops-nix/keys.txt";
+    defaultSopsFile = ../secrets/secrets.yaml;
+  };
+
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -178,14 +184,29 @@
     ];
   };
 
+  sops.secrets."vaultwarden/admin_token" = {};
+  sops.secrets."vaultwarden/push_installation_id" = {};
+  sops.secrets."vaultwarden/push_installation_key" = {};
+  sops.templates."vaultwarden-env" = {
+    owner = "vaultwarden";
+    group = "vaultwarden";
+    mode = "0400";
+    content = ''
+      ADMIN_TOKEN=${config.sops.placeholder."vaultwarden/admin_token"}
+      PUSH_INSTALLATION_ID=${config.sops.placeholder."vaultwarden/push_installation_id"}
+      PUSH_INSTALLATION_KEY=${config.sops.placeholder."vaultwarden/push_installation_key"}
+    '';
+  };
   services.vaultwarden = {
     enable = true;
     dbBackend = "sqlite";
+    environmentFile = config.sops.templates."vaultwarden-env".path;
     config = {
       SIGNUPS_ALLOWED = true;
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8222;
       ROCKET_LOG = "critical";
+      PUSH_ENABLED = true;
     };
   };
 

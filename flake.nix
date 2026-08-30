@@ -56,6 +56,8 @@
         };
         modules = [
           ./host/configuration.nix
+          inputs.sops-nix.nixosModules.sops
+
           nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen2
           home-manager.nixosModules.home-manager
           ({config, ...}: {
