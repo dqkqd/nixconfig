@@ -8,6 +8,10 @@
       AppAutoUpdate = false;
       BackgroundAppUpdate = false;
       DisableTelemetry = true;
+      DisableMasterPasswordCreation = true;
+      DisableProfileImport = true;
+      DisablePasswordReveal = true;
+      OfferToSaveLogins = false;
 
       ExtensionSettings = let
         moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
@@ -28,13 +32,13 @@
           installation_mode = "force_installed";
           updates_disabled = true;
         };
-        "keepassxc-browser@keepassxc.org" = {
-          install_url = moz "keepassxc-browser";
+        "{6b733b82-9261-47ee-a595-2dda294a4d08}" = {
+          install_url = moz "yomitan";
           installation_mode = "force_installed";
           updates_disabled = true;
         };
-        "{6b733b82-9261-47ee-a595-2dda294a4d08}" = {
-          install_url = moz "yomitan";
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          install_url = moz "bitwarden-password-manager";
           installation_mode = "force_installed";
           updates_disabled = true;
         };

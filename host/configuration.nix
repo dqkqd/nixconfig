@@ -178,9 +178,32 @@
     ];
   };
 
+  services.vaultwarden = {
+    enable = true;
+    dbBackend = "sqlite";
+    config = {
+      SIGNUPS_ALLOWED = true;
+      ROCKET_ADDRESS = "127.0.0.1";
+      ROCKET_PORT = 8222;
+      ROCKET_LOG = "critical";
+    };
+  };
+
   services.tailscale = {
     enable = true;
   };
+
+  services.caddy = {
+    enable = true;
+
+    virtualHosts."nixos.tail3396f3.ts.net".extraConfig = ''
+      encode zstd gzip
+      reverse_proxy 127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}
+    '';
+  };
+
+  # Allow the Caddy user(and service) to edit certs
+  services.tailscale.permitCertUid = "caddy";
 
   virtualisation.docker = {
     enable = true;
